@@ -90,10 +90,13 @@ ChatBot &ChatBot::operator=(ChatBot &&origin)
     }
     delete _image;
     _chatLogic = origin._chatLogic; 
+    _chatLogic->SetChatbotHandle(this);
+    _currentNode = origin._currentNode;
     _rootNode = origin._rootNode;
     _image = origin._image; 
 
     origin._chatLogic = nullptr;
+    origin._currentNode = nullptr;
     origin._rootNode = nullptr;
     origin._image = nullptr;
     return *this;
